@@ -10,4 +10,5 @@ open class CoffeeNote : RealmObject() {
     var date: Date = Date()
     var title: String = ""
     var detail: String = ""
+    var total: String = ""
 }

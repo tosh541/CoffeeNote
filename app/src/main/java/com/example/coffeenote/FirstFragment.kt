@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.coffeenote.databinding.FragmentFirstBinding
 import io.realm.Realm
+import io.realm.kotlin.where
 
 class FirstFragment : Fragment() {
     private var _binding: FragmentFirstBinding? = null
@@ -24,6 +26,14 @@ class FirstFragment : Fragment() {
     ): View? {
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.list.layoutManager = LinearLayoutManager(context)
+        val coffeeNotes = realm.where<CoffeeNote>().findAll()
+        val adapter = CoffeeNoteAdapter(coffeeNotes)
+        binding.list.adapter = adapter
     }
 
     override fun onDestroyView() {

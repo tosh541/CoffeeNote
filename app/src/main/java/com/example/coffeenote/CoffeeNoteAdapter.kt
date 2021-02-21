@@ -30,7 +30,7 @@ class CoffeeNoteAdapter(data: OrderedRealmCollection<CoffeeNote>) :
 
     override fun onBindViewHolder(holder: CoffeeNoteAdapter.ViewHolder, position: Int) {
         val coffeeNote: CoffeeNote? = getItem(position)
-        holder.date.text = DateFormat.format("yyyy/MM/dd HH:mm", coffeeNote?.date)
+        holder.date.text = DateFormat.format("yyyy/MM/dd", coffeeNote?.date)
         holder.title.text = coffeeNote?.title
     }
 

@@ -12,6 +12,12 @@ import io.realm.RealmRecyclerViewAdapter
 class CoffeeNoteAdapter(data: OrderedRealmCollection<CoffeeNote>) :
         RealmRecyclerViewAdapter<CoffeeNote, CoffeeNoteAdapter.ViewHolder>(data, true) {
 
+    private var listener: ((Long?) -> Unit)? = null
+
+    fun setOnItemClickListener(listener:(Long?) -> Unit) {
+        this.listener = listener
+    }
+
     init {
         setHasStableIds(true)
     }
@@ -32,6 +38,9 @@ class CoffeeNoteAdapter(data: OrderedRealmCollection<CoffeeNote>) :
         val coffeeNote: CoffeeNote? = getItem(position)
         holder.date.text = DateFormat.format("yyyy/MM/dd", coffeeNote?.date)
         holder.title.text = coffeeNote?.title
+        holder.itemView.setOnClickListener {
+            listener?.invoke(coffeeNote?.id)
+        }
     }
 
     override fun getItemId(position: Int): Long {

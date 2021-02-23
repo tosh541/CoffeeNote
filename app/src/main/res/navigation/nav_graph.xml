@@ -23,5 +23,10 @@
         android:id="@+id/coffeeNoteEditFragment"
         android:name="com.example.coffeenote.CoffeeNoteEditFragment"
         android:label="@string/coffee_note_edit_text"
-        tools:layout="@layout/fragment_coffee_note_edit" />
+        tools:layout="@layout/fragment_coffee_note_edit" >
+        <argument
+            android:name="coffeeNoteId"
+            app:argType="long"
+            android:defaultValue="-1L" />
+    </fragment>
 </navigation>

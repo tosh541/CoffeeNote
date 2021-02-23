@@ -45,9 +45,13 @@ class CoffeeNoteEditFragment : Fragment() {
             binding.dateEdit.setText(DateFormat.format("yyyy/MM/dd", coffeeNote?.date))
             binding.titleEdit.setText(coffeeNote?.title)
             binding.detailEdit.setText(coffeeNote?.detail)
+            binding.delete.visibility = View.VISIBLE
+        } else {
+            binding.delete.visibility = View.INVISIBLE
         }
         (activity as? MainActivity)?.setFabVisible(View.INVISIBLE)
         binding.save.setOnClickListener { saveCoffeeNote(it) }
+        binding.delete.setOnClickListener { deleteCoffeeNote(it) }
     }
 
     private fun saveCoffeeNote(view: View) {
@@ -82,6 +86,18 @@ class CoffeeNoteEditFragment : Fragment() {
                         .show()
             }
         }
+    }
+
+    private fun deleteCoffeeNote(view: View) {
+        realm.executeTransaction { db: Realm ->
+            db.where<CoffeeNote>().equalTo("id", args.coffeeNoteId)
+                    ?.findFirst()
+                    ?.deleteFromRealm()
+        }
+        Snackbar.make(view, "削除しました", Snackbar.LENGTH_SHORT)
+                .setActionTextColor(Color.YELLOW)
+                .show()
+        findNavController().popBackStack()
     }
 
     override fun onDestroyView() {

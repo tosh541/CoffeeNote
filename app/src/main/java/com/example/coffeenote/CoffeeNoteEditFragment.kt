@@ -42,7 +42,7 @@ class CoffeeNoteEditFragment : Fragment() {
         if (args.coffeeNoteId != -1L) {
             val coffeeNote = realm.where<CoffeeNote>()
                     .equalTo("id", args.coffeeNoteId).findFirst()
-            binding.dateEdit.setText(DateFormat.format("yyyy/MM/dd#", coffeeNote?.date))
+            binding.dateEdit.setText(DateFormat.format("yyyy/MM/dd", coffeeNote?.date))
             binding.titleEdit.setText(coffeeNote?.title)
             binding.detailEdit.setText(coffeeNote?.detail)
         }

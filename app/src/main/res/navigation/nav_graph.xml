@@ -15,11 +15,6 @@
             app:destination="@id/coffeeNoteEditFragment" />
     </fragment>
     <fragment
-        android:id="@+id/secondFragment"
-        android:name="com.example.coffeenote.SecondFragment"
-        android:label="fragment_second"
-        tools:layout="@layout/fragment_second" />
-    <fragment
         android:id="@+id/coffeeNoteEditFragment"
         android:name="com.example.coffeenote.CoffeeNoteEditFragment"
         android:label="@string/coffee_note_edit_text"

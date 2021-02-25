@@ -67,9 +67,8 @@ class CoffeeNoteEditFragment : Fragment() {
                     coffeeNote.detail = binding.titleEdit.text.toString()
                 }
                 Snackbar.make(view, "追加しました", Snackbar.LENGTH_SHORT)
-                        .setAction("戻る") { findNavController().popBackStack() }
-                        .setActionTextColor(Color.YELLOW)
                         .show()
+                findNavController().popBackStack()
             }
             else -> {
                 realm.executeTransaction { db: Realm ->
@@ -81,9 +80,8 @@ class CoffeeNoteEditFragment : Fragment() {
                     coffeeNote?.detail = binding.titleEdit.text.toString()
                 }
                 Snackbar.make(view, "修正しました", Snackbar.LENGTH_SHORT)
-                        .setAction("戻る") { findNavController().popBackStack() }
-                        .setActionTextColor(Color.YELLOW)
                         .show()
+                findNavController().popBackStack()
             }
         }
     }

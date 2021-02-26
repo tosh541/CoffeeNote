@@ -10,4 +10,8 @@
     <string name="date_button_text">日付選択</string>
     <string name="save_text">保存</string>
     <string name="delete_text">削除</string>
+    <string name="rich_text">コク</string>
+    <string name="bitter_text">苦味</string>
+    <string name="sour_text">酸味</string>
+    <string name="total_text">総合</string>
 </resources>

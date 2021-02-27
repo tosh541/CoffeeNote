@@ -4,6 +4,7 @@ import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import io.realm.OrderedRealmCollection
@@ -23,8 +24,8 @@ class CoffeeNoteAdapter(data: OrderedRealmCollection<CoffeeNote>) :
     }
 
     class ViewHolder(cell: View) : RecyclerView.ViewHolder(cell) {
-        val date: TextView = cell.findViewById(android.R.id.text1)
-        val title: TextView = cell.findViewById(android.R.id.text2)
+        val title: TextView = cell.findViewById(android.R.id.text1)
+        val total: TextView = cell.findViewById(android.R.id.text2)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):
@@ -36,8 +37,8 @@ class CoffeeNoteAdapter(data: OrderedRealmCollection<CoffeeNote>) :
 
     override fun onBindViewHolder(holder: CoffeeNoteAdapter.ViewHolder, position: Int) {
         val coffeeNote: CoffeeNote? = getItem(position)
-        holder.date.text = DateFormat.format("yyyy/MM/dd", coffeeNote?.date)
         holder.title.text = coffeeNote?.title
+        holder.total.text = ("星" + coffeeNote?.total.toString())
         holder.itemView.setOnClickListener {
             listener?.invoke(coffeeNote?.id)
         }

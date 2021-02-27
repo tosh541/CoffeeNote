@@ -10,5 +10,8 @@ open class CoffeeNote : RealmObject() {
     var date: Date = Date()
     var title: String = ""
     var detail: String = ""
-    var total: String = ""
+    var rich: Float = 0F
+    var bitter: Float = 0F
+    var sour: Float = 0F
+    var total: Float = 0F
 }

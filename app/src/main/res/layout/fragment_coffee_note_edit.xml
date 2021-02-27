@@ -7,6 +7,20 @@
     android:layout_height="match_parent"
     tools:context=".CoffeeNoteEditFragment" >
 
+    <TextView
+        android:id="@+id/total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="50dp"
+        android:fontFamily="serif-monospace"
+        android:text="@string/total_text"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sour" />
+
     <EditText
         android:id="@+id/dateEdit"
         android:layout_width="wrap_content"
@@ -83,12 +97,10 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <RatingBar
-        android:id="@+id/rich_rating"
+        android:id="@+id/richRating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:rating="0"
-        android:stepSize="0.5"
         app:layout_constraintBottom_toBottomOf="@+id/rich"
         app:layout_constraintStart_toEndOf="@+id/rich"
         app:layout_constraintTop_toTopOf="@+id/rich" />
@@ -122,12 +134,10 @@
         app:layout_constraintTop_toBottomOf="@+id/rich" />
 
     <RatingBar
-        android:id="@+id/bitter_rating"
+        android:id="@+id/bitterRating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:rating="0"
-        android:stepSize="0.5"
         app:layout_constraintBottom_toBottomOf="@+id/bitter"
         app:layout_constraintStart_toEndOf="@+id/bitter"
         app:layout_constraintTop_toTopOf="@+id/bitter" />
@@ -147,7 +157,7 @@
         app:layout_constraintTop_toBottomOf="@+id/bitter" />
 
     <RatingBar
-        android:id="@+id/sour_rating"
+        android:id="@+id/sourRating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -155,22 +165,8 @@
         app:layout_constraintStart_toEndOf="@+id/sour"
         app:layout_constraintTop_toTopOf="@+id/sour" />
 
-    <TextView
-        android:id="@+id/total"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="50dp"
-        android:fontFamily="serif-monospace"
-        android:text="@string/total_text"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textSize="30dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sour" />
-
     <RatingBar
-        android:id="@+id/total_rating"
+        android:id="@+id/totalRating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"

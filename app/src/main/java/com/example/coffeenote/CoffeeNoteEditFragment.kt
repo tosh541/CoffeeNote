@@ -44,6 +44,10 @@ class CoffeeNoteEditFragment : Fragment() {
                     .equalTo("id", args.coffeeNoteId).findFirst()
             binding.dateEdit.setText(DateFormat.format("yyyy/MM/dd", coffeeNote?.date))
             binding.titleEdit.setText(coffeeNote?.title)
+            if (coffeeNote?.rich != null) binding.richRating.rating = coffeeNote.rich
+            if (coffeeNote?.bitter != null) binding.bitterRating.rating = coffeeNote.bitter
+            if (coffeeNote?.sour != null) binding.sourRating.rating = coffeeNote.sour
+            if (coffeeNote?.total != null) binding.totalRating.rating = coffeeNote.total
             binding.detailEdit.setText(coffeeNote?.detail)
             binding.delete.visibility = View.VISIBLE
         } else {
@@ -64,9 +68,13 @@ class CoffeeNoteEditFragment : Fragment() {
                     val date = "${binding.dateEdit.text}".toDate()
                     if (date != null) coffeeNote.date = date
                     coffeeNote.title = binding.titleEdit.text.toString()
-                    coffeeNote.detail = binding.titleEdit.text.toString()
+                    coffeeNote.detail = binding.detailEdit.text.toString()
+                    coffeeNote.rich = binding.richRating.rating
+                    coffeeNote.bitter = binding.bitterRating.rating
+                    coffeeNote.sour = binding.sourRating.rating
+                    coffeeNote.total = binding.totalRating.rating
                 }
-                Snackbar.make(view, "追加しました", Snackbar.LENGTH_SHORT)
+                Snackbar.make(view, "保存しました", Snackbar.LENGTH_SHORT)
                         .show()
                 findNavController().popBackStack()
             }

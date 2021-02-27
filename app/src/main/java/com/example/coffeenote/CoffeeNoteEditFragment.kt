@@ -86,6 +86,10 @@ class CoffeeNoteEditFragment : Fragment() {
                     if (date != null) coffeeNote?.date = date
                     coffeeNote?.title = binding.titleEdit.text.toString()
                     coffeeNote?.detail = binding.titleEdit.text.toString()
+                    coffeeNote?.rich = binding.richRating.rating
+                    coffeeNote?.bitter = binding.bitterRating.rating
+                    coffeeNote?.sour = binding.sourRating.rating
+                    coffeeNote?.total = binding.totalRating.rating
                 }
                 Snackbar.make(view, "修正しました", Snackbar.LENGTH_SHORT)
                         .show()

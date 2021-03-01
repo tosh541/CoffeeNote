@@ -56,6 +56,10 @@ class CoffeeNoteEditFragment : Fragment() {
         (activity as? MainActivity)?.setFabVisible(View.INVISIBLE)
         binding.save.setOnClickListener { saveCoffeeNote(it) }
         binding.delete.setOnClickListener { deleteCoffeeNote(it) }
+        binding.dateButton.setOnClickListener {
+            DateDialog{ date -> binding.dateEdit.setText(date)}
+                    .show(parentFragmentManager, "date_dialog")
+        }
     }
 
     private fun saveCoffeeNote(view: View) {

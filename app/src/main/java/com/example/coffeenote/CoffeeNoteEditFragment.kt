@@ -52,6 +52,8 @@ class CoffeeNoteEditFragment : Fragment() {
             binding.delete.visibility = View.VISIBLE
         } else {
             binding.delete.visibility = View.INVISIBLE
+            val calendar = Calendar.getInstance()
+            binding.dateEdit.setText(DateFormat.format("yyyy/MM/dd", calendar))
         }
         (activity as? MainActivity)?.setFabVisible(View.INVISIBLE)
         binding.save.setOnClickListener { saveCoffeeNote(it) }

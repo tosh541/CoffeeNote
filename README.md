@@ -12,7 +12,12 @@ I like the coffee and I often drink coffee. I think if I have a recording applic
 
 ## Screenshots
 
-## Texh/framework used
+![edit1](https://user-images.githubusercontent.com/75255790/110111486-bf017200-7df3-11eb-96d2-7f212b4b6f15.png)
+
+
+![edit2](https://user-images.githubusercontent.com/75255790/110111531-cf195180-7df3-11eb-81ae-0325f846b0a8.png)
+
+## Tech/framework used
   - Android Studio 4.1.1
   - Kotlin 1.3.72
 

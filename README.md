@@ -11,13 +11,15 @@ I like the coffee and I often drink coffee. I think if I have a recording applic
   - Android 6.0~
 
 ## Screenshots
-
-![edit1](https://user-images.githubusercontent.com/75255790/110111486-bf017200-7df3-11eb-96d2-7f212b4b6f15.png)
-
+![edit1](https://user-images.githubusercontent.com/75255790/110188039-b9407680-7e5d-11eb-871c-260097ee0eba.png)
 
 ![edit2](https://user-images.githubusercontent.com/75255790/110111531-cf195180-7df3-11eb-81ae-0325f846b0a8.png)
 
-## Tech/framework used
+![listView1](https://user-images.githubusercontent.com/75255790/110188393-df1a4b00-7e5e-11eb-805f-977baa11e2ba.png)
+
+![listView2](https://user-images.githubusercontent.com/75255790/110188401-ea6d7680-7e5e-11eb-964e-76ed8ee9d781.jpg)
+
+## Texh/framework used
   - Android Studio 4.1.1
   - Kotlin 1.3.72
 

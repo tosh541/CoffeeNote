@@ -11,13 +11,13 @@ I like the coffee and I often drink coffee. I think if I have a recording applic
   - Android 6.0~
 
 ## Screenshots
-![edit1](https://user-images.githubusercontent.com/75255790/110188039-b9407680-7e5d-11eb-871c-260097ee0eba.png)
+<img src="https://user-images.githubusercontent.com/75255790/110191254-be57f280-7e6a-11eb-96f3-d1965816806f.jpg" width="320px">
 
-![edit2](https://user-images.githubusercontent.com/75255790/110111531-cf195180-7df3-11eb-81ae-0325f846b0a8.png)
+<img src="https://user-images.githubusercontent.com/75255790/110191267-c9128780-7e6a-11eb-9e0c-0bd20dae0396.jpg" width="320px">
 
-![listView1](https://user-images.githubusercontent.com/75255790/110188393-df1a4b00-7e5e-11eb-805f-977baa11e2ba.png)
+<img src="https://user-images.githubusercontent.com/75255790/110191274-d3348600-7e6a-11eb-95a4-a8aabdd16fc6.jpg" width="320px">
 
-<img src="https://user-images.githubusercontent.com/75255790/110188401-ea6d7680-7e5e-11eb-964e-76ed8ee9d781.jpg" width=320px>
+<img src="https://user-images.githubusercontent.com/75255790/110191280-da5b9400-7e6a-11eb-8e68-02d9b439d62d.jpg" width="320px">
 
 ## Texh/framework used
   - Android Studio 4.1.1

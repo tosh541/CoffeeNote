@@ -32,3 +32,6 @@ Some times, you may type miss and save it or wish to change something. In that c
 
 And some times, you may wish to delete some record. In that case, you trannsition to list view and tap about a record to be erased. Then the screen trannsition to edit view and then tap right-lower button which is a delete button.
 
+## Installation
+  - Android 6.0~
+

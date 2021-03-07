@@ -14,4 +14,5 @@
     <string name="bitter_text">苦味</string>
     <string name="sour_text">酸味</string>
     <string name="total_text">総合</string>
+    <string name="splash_text">Coffee Note</string>
 </resources>

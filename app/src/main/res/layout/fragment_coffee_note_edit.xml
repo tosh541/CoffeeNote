@@ -101,6 +101,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:theme="@style/RatingBar"
         app:layout_constraintBottom_toBottomOf="@+id/rich"
         app:layout_constraintStart_toEndOf="@+id/rich"
         app:layout_constraintTop_toTopOf="@+id/rich" />
@@ -138,6 +139,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:theme="@style/RatingBar"
         app:layout_constraintBottom_toBottomOf="@+id/bitter"
         app:layout_constraintStart_toEndOf="@+id/bitter"
         app:layout_constraintTop_toTopOf="@+id/bitter" />
@@ -161,6 +163,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:theme="@style/RatingBar"
         app:layout_constraintBottom_toBottomOf="@+id/sour"
         app:layout_constraintStart_toEndOf="@+id/sour"
         app:layout_constraintTop_toTopOf="@+id/sour" />
@@ -170,6 +173,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:theme="@style/RatingBar"
         app:layout_constraintBottom_toBottomOf="@+id/total"
         app:layout_constraintStart_toEndOf="@+id/total"
         app:layout_constraintTop_toTopOf="@+id/total" />

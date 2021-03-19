@@ -15,4 +15,5 @@
     <color name="black_33">#000015</color>
     <color name="gold">#FFD700</color>
     <color name="gray">#808080</color>
+    <color name="backGroundColor">#282828</color>
 </resources>

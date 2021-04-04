@@ -36,9 +36,7 @@ class DeleteDialog(private val okSelected: () -> Unit,
         builder.setPositiveButton("OK") { dialog, which ->
             okSelected()
         }
-        builder.setNegativeButton("Cancel") { dialog, which ->
-            cancelSelected()
-        }
+        builder.setNegativeButton("Cancel") { dialog, which -> }
         builder.setIcon(R.mipmap.ic_launcher)
 
         return builder.create()

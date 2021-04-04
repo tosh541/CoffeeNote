@@ -5,6 +5,7 @@ import android.app.DatePickerDialog
 import android.app.Dialog
 import android.os.Bundle
 import android.widget.DatePicker
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import java.util.*
 
@@ -23,5 +24,23 @@ class DateDialog(private val onSelected: (String) -> Unit) :
 
     override fun onDateSet(view: DatePicker, year: Int, month: Int, day: Int) {
         onSelected("$year/${month + 1}/$day")
+    }
+}
+class DeleteDialog(private val okSelected: () -> Unit,
+                   private val cancelSelected: () -> Unit)
+    : DialogFragment() {
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        val builder = AlertDialog.Builder(requireActivity())
+        builder.setTitle("CoffeeNote")
+        builder.setMessage("削除しますか?")
+        builder.setPositiveButton("OK") { dialog, which ->
+            okSelected()
+        }
+        builder.setNegativeButton("Cancel") { dialog, which ->
+            cancelSelected()
+        }
+        builder.setIcon(R.mipmap.ic_launcher)
+
+        return builder.create()
     }
 }

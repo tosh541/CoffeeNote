@@ -26,13 +26,13 @@ class DateDialog(private val onSelected: (String) -> Unit) :
         onSelected("$year/${month + 1}/$day")
     }
 }
-class DeleteDialog(private val okSelected: () -> Unit,
-                   private val cancelSelected: () -> Unit)
+class AlertDialog(private val message: String,
+                   private val okSelected: () -> Unit)
     : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val builder = AlertDialog.Builder(requireActivity())
         builder.setTitle("CoffeeNote")
-        builder.setMessage("削除しますか?")
+        builder.setMessage("${message}しますか?")
         builder.setPositiveButton("OK") { dialog, which ->
             okSelected()
         }

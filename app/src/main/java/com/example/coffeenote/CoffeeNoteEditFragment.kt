@@ -60,10 +60,12 @@ class CoffeeNoteEditFragment : Fragment() {
             binding.dateEdit.setText(DateFormat.format("yyyy/MM/dd", calendar))
         }
         (activity as? MainActivity)?.setFabVisible(View.INVISIBLE)
-        binding.save.setOnClickListener { saveCoffeeNote(it) }
+        binding.save.setOnClickListener {
+            val diailog = AlertDialog("保存", {saveCoffeeNote(it)})
+            diailog.show(parentFragmentManager, "save")
+        }
         binding.delete.setOnClickListener {
-            val dialog = DeleteDialog({deleteCoffeeNote(it)},
-                    {Snackbar.make(it, "Chancel", Snackbar.LENGTH_SHORT)})
+            val dialog = AlertDialog("削除", {deleteCoffeeNote(it)})
             dialog.show(parentFragmentManager, "delete")
         }
         binding.dateButton.setOnClickListener {

@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.coffeenote.databinding.FragmentFirstBinding
 import com.google.gson.Gson
 import io.ktor.client.*
-import io.ktor.client.engine.android.*
 import io.ktor.client.features.*
 import io.ktor.client.features.get
 import io.ktor.client.features.json.*

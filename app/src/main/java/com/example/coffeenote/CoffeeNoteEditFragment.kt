@@ -1,5 +1,6 @@
 package com.example.coffeenote
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.app.Dialog
 import android.graphics.Color
@@ -15,9 +16,16 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.coffeenote.databinding.FragmentCoffeeNoteEditBinding
 import com.google.android.material.snackbar.Snackbar
+import io.ktor.client.*
+import io.ktor.client.engine.cio.*
+import io.ktor.client.features.json.*
+import io.ktor.client.request.*
+import io.ktor.http.*
 import io.realm.Realm
 import io.realm.kotlin.createObject
 import io.realm.kotlin.where
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.runBlocking
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
@@ -25,6 +33,11 @@ import java.util.*
 class CoffeeNoteEditFragment : Fragment() {
     private var _binding: FragmentCoffeeNoteEditBinding? = null
     private val binding get() = _binding!!
+    private val client = HttpClient(CIO) {
+        install(JsonFeature) {
+            serializer = GsonSerializer()
+        }
+    }
 
     private lateinit var realm: Realm
 
@@ -61,8 +74,8 @@ class CoffeeNoteEditFragment : Fragment() {
         }
         (activity as? MainActivity)?.setFabVisible(View.INVISIBLE)
         binding.save.setOnClickListener {
-            val diailog = AlertDialog("保存", {saveCoffeeNote(it)})
-            diailog.show(parentFragmentManager, "save")
+            val dialog = AlertDialog("保存", {saveCoffeeNote(it)})
+            dialog.show(parentFragmentManager, "save")
         }
         binding.delete.setOnClickListener {
             val dialog = AlertDialog("削除", {deleteCoffeeNote(it)})
@@ -90,6 +103,18 @@ class CoffeeNoteEditFragment : Fragment() {
                     coffeeNote.sour = binding.sourRating.rating
                     coffeeNote.total = binding.totalRating.rating
                 }
+                val maxId = realm.where<CoffeeNote>().max("id")
+                val id = maxId?.toInt() ?: 0
+                val webDB = Note(id,
+                    binding.dateEdit.text.toString(),
+                    binding.titleEdit.text.toString(),
+                    binding.detailEdit.text.toString(),
+                    binding.richRating.rating.toBigDecimal(),
+                    binding.bitterRating.rating.toBigDecimal(),
+                    binding.sourRating.rating.toBigDecimal(),
+                    binding.totalRating.rating.toBigDecimal()
+                )
+                runBlocking { saveDate(webDB) }
                 Snackbar.make(view, "保存しました", Snackbar.LENGTH_SHORT)
                         .show()
                 findNavController().popBackStack()
@@ -136,6 +161,7 @@ class CoffeeNoteEditFragment : Fragment() {
         realm.close()
     }
 
+    @SuppressLint("SimpleDateFormat")
     private fun String.toDate(pattern: String = "yyyy/MM/dd"): Date? {
         return try {
             SimpleDateFormat(pattern).parse(this)
@@ -144,5 +170,13 @@ class CoffeeNoteEditFragment : Fragment() {
         } catch (e: ParseException) {
             return null
         }
+    }
+
+    private suspend fun saveDate(data: Note) = coroutineScope {
+        val response = client.post<Unit>("http://10.0.2.2:8080/coffeeNotes/") {
+            contentType(ContentType.Application.Json)
+            body = data
+        }
+        return@coroutineScope response
     }
 }

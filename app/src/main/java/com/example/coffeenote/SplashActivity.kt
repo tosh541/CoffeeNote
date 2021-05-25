@@ -1,11 +1,11 @@
 package com.example.coffeenote
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.gson.Gson
 import io.ktor.client.*
-import io.ktor.client.engine.android.*
 import io.ktor.client.engine.cio.*
 import io.ktor.client.features.json.*
 import io.ktor.client.request.*
@@ -71,6 +71,7 @@ class SplashActivity : AppCompatActivity() {
         return@coroutineScope response
     }
 
+    @SuppressLint("SimpleDateFormat")
     private fun String.toDate(pattern: String = "yyyy/MM/dd"): Date? {
         return try {
             SimpleDateFormat(pattern).parse(this)

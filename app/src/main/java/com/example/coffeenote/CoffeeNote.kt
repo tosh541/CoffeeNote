@@ -2,6 +2,7 @@ package com.example.coffeenote
 
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
+import java.math.BigDecimal
 import java.util.*
 
 open class CoffeeNote : RealmObject() {
@@ -15,3 +16,13 @@ open class CoffeeNote : RealmObject() {
     var sour: Float = 0F
     var total: Float = 0F
 }
+
+data class Note(val id: Int,
+                val date: String,
+                val title: String,
+                val detail: String,
+                val rich: BigDecimal,
+                val bitter: BigDecimal,
+                val sour: BigDecimal,
+                val total: BigDecimal
+                )

@@ -29,6 +29,7 @@ import kotlinx.coroutines.runBlocking
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
+import io.ktor.client.request.delete
 
 class CoffeeNoteEditFragment : Fragment() {
     private var _binding: FragmentCoffeeNoteEditBinding? = null
@@ -114,7 +115,7 @@ class CoffeeNoteEditFragment : Fragment() {
                     binding.sourRating.rating.toBigDecimal(),
                     binding.totalRating.rating.toBigDecimal()
                 )
-                runBlocking { saveDate(webDB) }
+                runBlocking { saveData(webDB) }
                 Snackbar.make(view, "保存しました", Snackbar.LENGTH_SHORT)
                         .show()
                 findNavController().popBackStack()
@@ -145,6 +146,7 @@ class CoffeeNoteEditFragment : Fragment() {
                     ?.findFirst()
                     ?.deleteFromRealm()
         }
+        runBlocking { deleteData() }
         Snackbar.make(view, "削除しました", Snackbar.LENGTH_SHORT)
                 .setActionTextColor(Color.YELLOW)
                 .show()
@@ -159,6 +161,7 @@ class CoffeeNoteEditFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         realm.close()
+        client.close()
     }
 
     @SuppressLint("SimpleDateFormat")
@@ -172,11 +175,16 @@ class CoffeeNoteEditFragment : Fragment() {
         }
     }
 
-    private suspend fun saveDate(data: Note) = coroutineScope {
+    private suspend fun saveData(data: Note) = coroutineScope {
         val response = client.post<Unit>("http://10.0.2.2:8080/coffeeNotes/") {
             contentType(ContentType.Application.Json)
             body = data
         }
         return@coroutineScope response
+    }
+
+    private suspend fun deleteData() = coroutineScope {
+        val id = args.coffeeNoteId.toInt()
+        client.delete<Unit>("http://10.0.2.2:8080/coffeeNotes/${id}")
     }
 }

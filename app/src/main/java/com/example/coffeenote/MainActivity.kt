@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.coffeenote.databinding.ActivityMainBinding
-import com.example.coffeenote.databinding.FragmentFirstBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -18,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         val naviController = findNavController(R.id.nav_host_fragment)
         setupActionBarWithNavController(naviController)
 
-        binding.fab.setOnClickListener { view ->
+        binding.fab.setOnClickListener {
             naviController.navigate(R.id.action_to_coffeeNoteEditFragment)
         }
     }

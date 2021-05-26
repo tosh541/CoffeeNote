@@ -1,16 +1,12 @@
 package com.example.coffeenote
 
 import android.annotation.SuppressLint
-import android.app.AlertDialog
-import android.app.Dialog
 import android.graphics.Color
 import android.os.Bundle
 import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -48,7 +44,7 @@ class CoffeeNoteEditFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+                              savedInstanceState: Bundle?): View {
         _binding = FragmentCoffeeNoteEditBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -75,11 +71,11 @@ class CoffeeNoteEditFragment : Fragment() {
         }
         (activity as? MainActivity)?.setFabVisible(View.INVISIBLE)
         binding.save.setOnClickListener {
-            val dialog = AlertDialog("保存", {saveCoffeeNote(it)})
+            val dialog = AlertDialog("保存") { saveCoffeeNote(it) }
             dialog.show(parentFragmentManager, "save")
         }
         binding.delete.setOnClickListener {
-            val dialog = AlertDialog("削除", {deleteCoffeeNote(it)})
+            val dialog = AlertDialog("削除") { deleteCoffeeNote(it) }
             dialog.show(parentFragmentManager, "delete")
         }
         binding.dateButton.setOnClickListener {
@@ -186,11 +182,10 @@ class CoffeeNoteEditFragment : Fragment() {
     }
 
     private suspend fun saveData(data: Note) = coroutineScope {
-        val response = client.post<Unit>("http://10.0.2.2:8080/coffeeNotes/") {
+        return@coroutineScope client.post<Unit>("http://10.0.2.2:8080/coffeeNotes/") {
             contentType(ContentType.Application.Json)
             body = data
         }
-        return@coroutineScope response
     }
 
     private suspend fun deleteData() = coroutineScope {
@@ -200,7 +195,7 @@ class CoffeeNoteEditFragment : Fragment() {
 
     private suspend fun updateData(data: Note) = coroutineScope {
         val id = data.id
-        val response = client.put<Unit>("http://10.0.2.2:8080/coffeeNotes/${id}") {
+        client.put<Unit>("http://10.0.2.2:8080/coffeeNotes/${id}") {
             contentType(ContentType.Application.Json)
             body = data
         }

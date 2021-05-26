@@ -5,21 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.coffeenote.databinding.FragmentFirstBinding
-import com.google.gson.Gson
-import io.ktor.client.*
-import io.ktor.client.features.*
-import io.ktor.client.features.get
-import io.ktor.client.features.json.*
-import io.ktor.client.request.*
-import io.ktor.client.statement.*
 import io.realm.Realm
 import io.realm.kotlin.where
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 
 class FirstFragment : Fragment() {
     private var _binding: FragmentFirstBinding? = null
@@ -33,7 +23,7 @@ class FirstFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
         return binding.root
     }

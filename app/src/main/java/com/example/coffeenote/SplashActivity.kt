@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.google.gson.Gson
 import io.ktor.client.*
 import io.ktor.client.engine.cio.*
 import io.ktor.client.features.json.*
@@ -67,8 +66,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private suspend fun getAll() = coroutineScope {
-        val response = client.get<List<Note>>("http://10.0.2.2:8080/coffeeNotes/")
-        return@coroutineScope response
+        return@coroutineScope client.get<List<Note>>("http://10.0.2.2:8080/coffeeNotes/")
     }
 
     @SuppressLint("SimpleDateFormat")

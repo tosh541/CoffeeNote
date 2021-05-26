@@ -106,7 +106,7 @@ class CoffeeNoteEditFragment : Fragment() {
                 }
                 val maxId = realm.where<CoffeeNote>().max("id")
                 val id = maxId?.toInt() ?: 0
-                val webDB = Note(id,
+                val data = Note(id,
                     binding.dateEdit.text.toString(),
                     binding.titleEdit.text.toString(),
                     binding.detailEdit.text.toString(),
@@ -115,7 +115,7 @@ class CoffeeNoteEditFragment : Fragment() {
                     binding.sourRating.rating.toBigDecimal(),
                     binding.totalRating.rating.toBigDecimal()
                 )
-                runBlocking { saveData(webDB) }
+                runBlocking { saveData(data) }
                 Snackbar.make(view, "保存しました", Snackbar.LENGTH_SHORT)
                         .show()
                 findNavController().popBackStack()
@@ -133,6 +133,16 @@ class CoffeeNoteEditFragment : Fragment() {
                     coffeeNote?.sour = binding.sourRating.rating
                     coffeeNote?.total = binding.totalRating.rating
                 }
+                val data = Note(args.coffeeNoteId.toInt(),
+                    binding.dateEdit.text.toString(),
+                    binding.titleEdit.text.toString(),
+                    binding.detailEdit.text.toString(),
+                    binding.richRating.rating.toBigDecimal(),
+                    binding.bitterRating.rating.toBigDecimal(),
+                    binding.sourRating.rating.toBigDecimal(),
+                    binding.totalRating.rating.toBigDecimal()
+                )
+                runBlocking { updateData(data) }
                 Snackbar.make(view, "修正しました", Snackbar.LENGTH_SHORT)
                         .show()
                 findNavController().popBackStack()
@@ -186,5 +196,13 @@ class CoffeeNoteEditFragment : Fragment() {
     private suspend fun deleteData() = coroutineScope {
         val id = args.coffeeNoteId.toInt()
         client.delete<Unit>("http://10.0.2.2:8080/coffeeNotes/${id}")
+    }
+
+    private suspend fun updateData(data: Note) = coroutineScope {
+        val id = data.id
+        val response = client.put<Unit>("http://10.0.2.2:8080/coffeeNotes/${id}") {
+            contentType(ContentType.Application.Json)
+            body = data
+        }
     }
 }

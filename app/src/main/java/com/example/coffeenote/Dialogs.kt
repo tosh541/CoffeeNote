@@ -17,7 +17,7 @@ class DateDialog(private val onSelected: (String) -> Unit) :
         val month = c.get(Calendar.MONTH)
         val day = c.get(Calendar.DAY_OF_MONTH)
 
-        return DatePickerDialog(requireActivity(), this, year, month, day)
+        return DatePickerDialog(requireActivity(), R.style.DialogStyle, this, year, month, day)
     }
 
     override fun onDateSet(view: DatePicker, year: Int, month: Int, day: Int) {
@@ -28,7 +28,7 @@ class AlertDialog(private val message: String,
                    private val okSelected: () -> Unit)
     : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val builder = AlertDialog.Builder(requireActivity())
+        val builder = AlertDialog.Builder(requireActivity(), R.style.DialogStyle)
         builder.setTitle("CoffeeNote")
         builder.setMessage("${message}しますか?")
         builder.setPositiveButton("OK") { dialog, which ->
